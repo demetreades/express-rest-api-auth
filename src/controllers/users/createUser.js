@@ -6,7 +6,8 @@ const userService = require('../../services/userService');
 const logger = require('../../utils/logger');
 
 module.exports = asyncHandler(async (req, res, next) => {
-  const user = await userService.create(req.body);
+  const { body } = req;
+  const user = await userService.create(body);
 
   logger.info(
     `POST user created with, username: ${user.username} id: ${user._id}`

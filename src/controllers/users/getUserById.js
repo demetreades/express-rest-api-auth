@@ -6,7 +6,8 @@ const userService = require('../../services/userService');
 const logger = require('../../utils/logger');
 
 module.exports = asyncHandler(async (req, res, next) => {
-  const user = await userService.getById(req.params.id);
+  const { params: { id } } = req;
+  const user = await userService.getById(id);
 
   logger.info(
     `GET single user with username: ${user.username} id: ${user._id}`

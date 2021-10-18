@@ -6,7 +6,8 @@ const userService = require('../../services/userService');
 const logger = require('../../utils/logger');
 
 module.exports = asyncHandler(async (req, res, next) => {
-  const user = await userService.updateById(req.params.id, req.body);
+  const { body, params: { id } } = req;
+  const user = await userService.updateById(id, body);
 
   logger.info(`POST update user with id: ${user._id}`);
 
