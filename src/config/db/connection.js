@@ -12,7 +12,7 @@ module.exports = async () => {
       useNewUrlParser: true,
     });
 
-    logger.info(`Database connected: ${db.connection.host}`);
+    logger.info(`Database connected: ${process.env.MONGO_URI}`);
   } catch (err) {
     logger.error(`Database connection error: ${err.message}, ${err}`);
     process.exit(1);
