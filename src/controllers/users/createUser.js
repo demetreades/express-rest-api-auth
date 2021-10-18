@@ -1,0 +1,19 @@
+'use strict';
+
+const { StatusCodes } = require('http-status-codes');
+const asyncHandler = require('express-async-handler');
+const userService = require('../../services/userService');
+const logger = require('../../utils/logger');
+
+module.exports = asyncHandler(async (req, res, next) => {
+  const user = await userService.create(req.body);
+
+  logger.info(
+    `POST user created with, username: ${user.username} id: ${user._id}`
+  );
+
+  res.status(StatusCodes.CREATED).json({
+    success: true,
+    data: user,
+  });
+});
