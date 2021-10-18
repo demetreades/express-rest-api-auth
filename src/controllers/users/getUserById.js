@@ -8,7 +8,9 @@ const logger = require('../../utils/logger');
 module.exports = asyncHandler(async (req, res, next) => {
   const user = await userService.getById(req.params.id);
 
-  logger.info(`GET single user, username: ${user.username} id: ${user._id}`);
+  logger.info(
+    `GET single user with username: ${user.username} id: ${user._id}`
+  );
 
   res.status(StatusCodes.OK).json({
     success: true,
