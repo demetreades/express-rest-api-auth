@@ -1,4 +1,3 @@
-// const express = require('express');
 const router = require('express').Router();
 const {
   getUsers,
@@ -7,8 +6,6 @@ const {
   updateUser,
   deleteUserById,
 } = require('../../controllers/users');
-
-// const router = express.Router();
 
 router
   .route('/')
