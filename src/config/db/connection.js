@@ -7,7 +7,7 @@ const logger = require('../../utils/logger');
 
 module.exports = async () => {
   try {
-    const db = await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
