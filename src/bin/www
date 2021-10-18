@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const app = require('../app');
+const http = require('http');
+const normalizePort = require('../utils/normalizePort');
+const handleExit = require('../utils/handleExit');
+const logger = require('../utils/logger');
+
+const PORT = normalizePort(process.env.PORT || '5000');
+app.set('port', PORT);
+
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
+  logger.info(
+    `Server running in ${process.env.NODE_ENV} mode on ${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}`
+  );
+
+  if (process.send !== undefined) {
+    logger.info('Process ready');
+    process.send('ready');
+  }
+
+  process.on('exit', handleExit('exit'));
+  process.on('SIGINT', handleExit('SIGINT'));
+  process.on('SIGTERM', handleExit('SIGTERM'));
+  process.on('uncaughtException', handleExit('uncaughtException'));
+  process.on('uncaughtRejection', handleExit('uncaughtRejection'));
+});
