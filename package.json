@@ -2,10 +2,10 @@
   "name": "rest-api-auth",
   "version": "0.1.0",
   "description": "node express ",
-  "main": "src/app.js",
+  "main": "src/bin/www",
   "scripts": {
     "start": "node src/app",
-    "dev": "nodemon src/app",
+    "dev": "nodemon src/bin/www",
     "DATA:import": "node src/config/db/seeder",
     "DATA:remove": "node src/config/db/seeder -del"
   },
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.13",
-    "pino-pretty": "^7.1.0"
+    "pino-pretty": "^7.1.0",
+    "prettier": "^2.4.1"
   }
 }
