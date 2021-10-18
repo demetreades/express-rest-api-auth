@@ -5,4 +5,4 @@ package-lock.json
 
 .env
 
-src/controllers/users/OTHER
+/src/controllers/users/OTHER
