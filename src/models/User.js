@@ -42,7 +42,7 @@ const userSchema = mongoose.Schema(
 
     // role: {
     //   type: String,
-    //   enum: ['user', 'publisher'],
+    //   enum: ['User', 'Editor', 'Admin'],
     //   default: 'user',
     // },
 
@@ -71,19 +71,19 @@ userSchema.pre('save', async function (next) {
 module.exports = mongoose.model('User', userSchema);
 
 // // Sign JWT and return
-// UserSchema.methods.getSignedJwtToken = function () {
+// userSchema.methods.getSignedJwtToken = function () {
 //   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
 //     expiresIn: process.env.JWT_EXPIRE,
 //   });
 // };
 
 // // Match user entered password to hashed password in database
-// UserSchema.methods.matchPassword = async function (enteredPassword) {
+// userSchema.methods.matchPassword = async function (enteredPassword) {
 //   return await bcrypt.compare(enteredPassword, this.password);
 // };
 
 // // Generate and hash password token
-// UserSchema.methods.getResetPasswordToken = function () {
+// userSchema.methods.getResetPasswordToken = function () {
 //   // Generate token
 //   const resetToken = crypto.randomBytes(20).toString('hex');
 
