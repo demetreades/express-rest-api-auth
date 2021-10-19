@@ -3,19 +3,22 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 
-const dbConnection = require('./config/db/connection');
 const {
   handleErrors,
   handleMongoErrors,
   handleNotFound,
 } = require('./middleware');
+const { dbConnection, corsOption } = require('./config');
 
 const userRoutes = require('./routes/users');
 
 dbConnection();
 
 const app = express();
+
+app.use(cors(corsOption));
 
 // app.use(morgan('dev'));
 app.use(express.json());
