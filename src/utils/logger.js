@@ -2,17 +2,17 @@
 
 const pino = require('pino');
 
-module.exports = pino({
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      destination: 2,
-      levelFirst: true,
-      translateTime: 'SYS:standard',
-      ignore: 'hostname,pid',
-    },
-  },
-});
+// module.exports = pino({
+//   transport: {
+//     target: 'pino-pretty',
+//     options: {
+//       destination: 2,
+//       levelFirst: true,
+//       translateTime: 'SYS:standard',
+//       ignore: 'hostname,pid',
+//     },
+//   },
+// });
 
 // /////////////////////////////////////////
 // /////////////////////////////////////////
@@ -28,14 +28,14 @@ module.exports = pino({
 //   fatal: 60,
 // };
 
-// module.exports = pino(
-//   {
-//     prettyPrint: {
-//       colorize: true,
-//       levelFirst: true,
-//       translateTime: 'SYS:standard',
-//       ignore: 'hostname,pid',
-//     },
-//   }
-//   // pino.destination('./logs/logger.log')
-// );
+module.exports = pino(
+  {
+    prettyPrint: {
+      colorize: true,
+      levelFirst: true,
+      translateTime: 'SYS:standard',
+      ignore: 'hostname,pid',
+    },
+  }
+  // pino.destination('./logs/logger.log')
+);
