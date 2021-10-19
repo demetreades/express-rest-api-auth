@@ -1,7 +1,7 @@
 'use strict';
 
 const { StatusCodes } = require('http-status-codes');
-const BaseError = require('../../utils/BaseError');
+const { BaseError } = require('../../utils');
 
 module.exports = (err, req, res, next) => {
   if (err.name === 'CastError') {

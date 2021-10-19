@@ -3,7 +3,7 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const userService = require('../../services/userService');
-const logger = require('../../utils/logger');
+const { logger } = require('../../utils');
 
 module.exports = asyncHandler(async (req, res, next) => {
   const { body } = req;
