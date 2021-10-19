@@ -5,21 +5,23 @@ const express = require('express');
 const morgan = require('morgan');
 
 const dbConnection = require('./config/db/connection');
-const handleErrors = require('./middleware/errors/handleErrors');
-const handleMongoErrors = require('./middleware/errors/handleMongoErrors');
-const handleNotFound = require('./middleware/errors/handleNotFound');
-// const logger = require('./utils/logger');
+const {
+  handleErrors,
+  handleMongoErrors,
+  handleNotFound,
+} = require('./middleware');
 
-const userRoutes = require('./routes/api/users');
+const userRoutes = require('./routes/users');
 
 dbConnection();
 
 const app = express();
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.get('/', (req, res) => res.json({ message: 'App is working' }));
 app.use('/api/users', userRoutes);
 
 app.use(handleNotFound);

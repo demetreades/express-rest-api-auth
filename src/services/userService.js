@@ -1,7 +1,7 @@
 'use strict';
 
 const { StatusCodes } = require('http-status-codes');
-const BaseError = require('../utils/BaseError');
+const { BaseError } = require('../utils');
 const User = require('../models/User');
 
 const create = async (body) => {
@@ -26,8 +26,8 @@ const getAll = async () => {
   return users;
 };
 
-const getById = async (userId) => {
-  const user = await User.findById(userId);
+const getById = async (id) => {
+  const user = await User.findById(id);
 
   if (!user) {
     throw new BaseError('User not found', StatusCodes.NOT_FOUND);
@@ -36,8 +36,8 @@ const getById = async (userId) => {
   return user;
 };
 
-const updateById = async (userId, body) => {
-  const user = await User.findByIdAndUpdate(userId, body, {
+const updateById = async (id, body) => {
+  const user = await User.findByIdAndUpdate(id, body, {
     new: true,
     runValidators: true,
   });
@@ -49,8 +49,8 @@ const updateById = async (userId, body) => {
   return user;
 };
 
-const deleteById = async (userId) => {
-  const user = await User.findByIdAndDelete(userId);
+const deleteById = async (id) => {
+  const user = await User.findByIdAndDelete(id);
 
   if (!user) {
     throw new BaseError('User not found', StatusCodes.NOT_FOUND);
