@@ -4,13 +4,15 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const {
   handleErrors,
   handleMongoErrors,
   handleNotFound,
 } = require('./middleware');
-const { dbConnection, corsOption } = require('./config');
+const { dbConnection, corsOptions, limitOptions } = require('./config');
 
 const userRoutes = require('./routes/users');
 
@@ -18,7 +20,9 @@ dbConnection();
 
 const app = express();
 
-app.use(cors(corsOption));
+app.use(helmet());
+app.use(rateLimit(limitOptions));
+app.use(cors(corsOptions));
 
 // app.use(morgan('dev'));
 app.use(express.json());
