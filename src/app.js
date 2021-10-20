@@ -2,17 +2,24 @@
 
 require('dotenv').config();
 const express = require('express');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const session = require('express-session');
+const passport = require('passport');
 
 const {
   handleErrors,
   handleMongoErrors,
   handleNotFound,
 } = require('./middleware');
-const { dbConnection, corsOptions, limitOptions } = require('./config');
+const {
+  dbConnection,
+  corsOptions,
+  limitOptions,
+  sessionOptions,
+} = require('./config');
 
 const userRoutes = require('./routes/users');
 
@@ -28,7 +35,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.json({ message: 'App is working' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/', (req, res) => res.json({ message: 'development root endpoint' }));
 app.use('/api/users', userRoutes);
 
 app.use(handleNotFound);
