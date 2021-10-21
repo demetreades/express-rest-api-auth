@@ -1,7 +1,7 @@
 'use strict';
 
 const { StatusCodes } = require('http-status-codes');
-const { logger } = require('../../utils');
+const logger = require('../logger');
 
 module.exports = (err, req, res, next) => {
   const { statusCode, message } = err;
