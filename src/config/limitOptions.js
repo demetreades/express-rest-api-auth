@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   windowMs: 1 * 60 * 1000,
   max: 25,
