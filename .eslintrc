@@ -14,6 +14,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "node/shebang": "off",
         "no-process-exit": "off",
         "accessor-pairs": "error",
         "array-bracket-newline": "error",
@@ -275,7 +276,7 @@
             "error",
             "always"
         ],
-        "strict": "warn",
+        "strict": "off",
         "switch-colon-spacing": "error",
         "symbol-description": "error",
         "template-curly-spacing": [
