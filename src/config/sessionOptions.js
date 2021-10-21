@@ -3,7 +3,7 @@
 require('dotenv').config();
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const dbConnection = require('./db/connection');
+const dbConnection = require('../services/database/connection');
 
 const sessionStore = new MongoDBStore({
   uri: process.env.MONGO_URI,
