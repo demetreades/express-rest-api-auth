@@ -9,4 +9,5 @@ module.exports = {
   limitOptions,
   dbConnection,
   passport,
+  sessionOptions
 };
