@@ -4,7 +4,7 @@
   "description": "node express ",
   "main": "src/bin/www",
   "scripts": {
-    "start": "node src/app",
+    "start": "NODE_ENV=production node src/bin/www",
     "dev": "nodemon src/bin/www",
     "DATA:import": "node src/config/db/seeder",
     "DATA:remove": "node src/config/db/seeder -del"
@@ -12,7 +12,8 @@
   "keywords": [
     "node",
     "express",
-    "rest-api"
+    "rest-api",
+    "auth"
   ],
   "author": "quorum",
   "license": "ISC",
