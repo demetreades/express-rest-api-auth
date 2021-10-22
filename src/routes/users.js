@@ -1,6 +1,6 @@
 'use strict';
 
-const router = require('express').Router();
+const { Router } = require('express');
 const {
   getUsers,
   getUserById,
@@ -8,6 +8,8 @@ const {
   updateUser,
   deleteUserById,
 } = require('../controllers');
+
+const router = Router();
 
 router
   .route('/')
