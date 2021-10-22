@@ -2,14 +2,19 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const userService = require('../../services/userService');
+const userService = require('../../services/user');
 const { logger } = require('../../utils');
 
 module.exports = asyncHandler(async (req, res, next) => {
-  logger.info('login user');
+  const { username, password } = req.body;
 
-  res.status(StatusCodes.OK).json({
+  logger.info(`CONTROLLER: ${username}, logged in`);
+
+  // console.log(username);
+  // console.log(password);
+
+  res.status(StatusCodes.ACCEPTED).json({
     success: true,
-    data: {},
+    message: `user: ${username}, logged in`,
   });
 });
