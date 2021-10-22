@@ -3,7 +3,7 @@
 const fs = require('fs');
 const dbConnection = require('./connection');
 const { logger } = require('../../utils');
-const User = require('../../models/User');
+const User = require('../models/User');
 
 dbConnection();
 
