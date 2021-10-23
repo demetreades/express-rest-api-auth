@@ -4,3 +4,8 @@ node_modules
 package-lock.json
 
 .env
+
+# local
+
+src/utils/auth
+src/config/passport/localStrategy2.js
