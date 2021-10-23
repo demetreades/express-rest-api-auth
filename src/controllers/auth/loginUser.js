@@ -2,16 +2,16 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const userService = require('../../services/user');
-const { logger } = require('../../utils');
+const { logger, BaseError } = require('../../utils');
 
 module.exports = asyncHandler(async (req, res, next) => {
   const { username, password } = req.body;
 
-  logger.info(`CONTROLLER: ${username}, logged in`);
+  // if (req.user) {
+  //   return next(new BaseError('You are already logged in'));
+  // }
 
-  // console.log(username);
-  // console.log(password);
+  logger.info(`CONTROLLER: ${username}, logged in`);
 
   res.status(StatusCodes.ACCEPTED).json({
     success: true,
