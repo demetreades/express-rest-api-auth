@@ -15,6 +15,8 @@ const { corsOptions, limitOptions, sessionOptions } = require('./config');
 const userRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
 
+const getActiveUser = require('./controllers/activeUser');
+
 dbConnection();
 
 const app = express();
@@ -32,6 +34,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport/localStrategy');
+
+app.use(getActiveUser); // temporary for checking if req.user exist
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
