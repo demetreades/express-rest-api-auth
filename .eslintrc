@@ -14,9 +14,10 @@
 		"ecmaVersion": "latest"
 	},
 	"rules": {
+		"node/no-missing-require": "off",
+		"node/shebang": "off",
 		"newline-per-chained-call": "off",
 		"max-statements": "off",
-		"node/shebang": "off",
 		"no-process-exit": "off",
 		"accessor-pairs": "error",
 		"array-bracket-newline": "error",
