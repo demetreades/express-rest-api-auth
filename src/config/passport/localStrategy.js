@@ -1,4 +1,3 @@
-/* eslint-disable max-statements */
 'use strict';
 
 const { StatusCodes } = require('http-status-codes');
@@ -9,18 +8,16 @@ const userService = require('../../services/user');
 const { logger } = require('../../utils');
 
 passport.serializeUser((user, done) => {
-  done(null, user.username);
+  return done(null, user.username);
 });
 
 passport.deserializeUser(async (username, done) => {
   try {
     const result = await userService.getByProperty(username);
-    if (result) {
-      done(null, result);
-    }
-  } catch (error) {
-    logger.error(`LOCAL DESERIALIZE USER: ${error}`);
-    done(error, false);
+    return done(null, result);
+  } catch (err) {
+    logger.error(`LOCAL DESERIALIZE USER: ${err}`);
+    return done(err, false);
   }
 });
 
@@ -32,15 +29,16 @@ passport.use(
 
       if (result && matchPassword) {
         logger.info(`LOCAL STRATEGY: ${result.username} logged in`);
-        done(null, result);
-      } else {
-        logger.error('LOCAL STRATEGY: Wrong Username or Password');
-        const message = 'Wrong Username or Password';
-        done({ message, statusCode: StatusCodes.UNAUTHORIZED }, false);
+        return done(null, result);
       }
-    } catch (error) {
-      logger.error(`LOCAL STRATEGY: ${error}`);
-      done(error, false);
+
+      logger.error('LOCAL STRATEGY: Wrong Username or Password');
+      const message = 'Wrong Username or Password';
+
+      return done({ message, statusCode: StatusCodes.UNAUTHORIZED }, false);
+    } catch (err) {
+      logger.error(`LOCAL STRATEGY: ${err}`);
+      return done(err);
     }
   })
 );
