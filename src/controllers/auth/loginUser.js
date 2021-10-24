@@ -15,20 +15,20 @@ module.exports = async (req, res, next) => {
 
     logger.info(`CONTROLLER: ${username}, logged in`);
 
-    req.login(user, (err) => {
-      if (err) {
-        if (err.isJoi === true) {
-          return next(
-            new BaseError(
-              err.details[0].message,
-              StatusCodes.UNPROCESSABLE_ENTITY
-            )
-          );
-        }
+    // req.login(user, (err) => {
+    //   if (err) {
+    //     if (err.isJoi === true) {
+    //       return next(
+    //         new BaseError(
+    //           err.details[0].message,
+    //           StatusCodes.UNPROCESSABLE_ENTITY
+    //         )
+    //       );
+    //     }
 
-        return next(err);
-      }
-    });
+    //     return next(err);
+    //   }
+    // });
 
     res.status(StatusCodes.ACCEPTED).json({
       success: true,
