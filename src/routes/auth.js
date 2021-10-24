@@ -9,7 +9,7 @@ const {
 
 const router = Router();
 
-router.post('/login', passport.authenticate('local'), loginUser);
+router.post('/login', loginUser, passport.authenticate('local'));
 router.get('/logout', logOutUser);
 router.get('/profile', getProfile);
 
