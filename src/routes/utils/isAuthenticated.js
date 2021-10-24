@@ -1,3 +1,5 @@
+'use strict';
+
 const { BaseError } = require('../../utils');
 const { StatusCodes } = require('http-status-codes');
 
