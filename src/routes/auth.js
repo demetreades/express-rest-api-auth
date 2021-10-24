@@ -1,11 +1,12 @@
 'use strict';
 
+require('module-alias/register');
 const { Router } = require('express');
 const passport = require('passport');
 
 const {
   authController: { loginUser, logOutUser, getProfile },
-} = require('../controllers');
+} = require('@controllers');
 const { isAuthenticated } = require('./utils/isAuthenticated');
 
 const router = Router();

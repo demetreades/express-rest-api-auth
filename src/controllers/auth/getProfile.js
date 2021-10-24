@@ -1,7 +1,8 @@
 'use strict';
 
+require('module-alias/register');
 const { StatusCodes } = require('http-status-codes');
-const { logger, BaseError } = require('../../utils');
+const { logger, BaseError } = require('@utils');
 
 module.exports = async (req, res, next) => {
   try {

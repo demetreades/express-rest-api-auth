@@ -1,5 +1,6 @@
 'use strict';
 
+require('module-alias/register');
 const { Router } = require('express');
 const {
   usersController: {
@@ -9,7 +10,7 @@ const {
     updateUser,
     deleteUserById,
   },
-} = require('../controllers');
+} = require('@controllers');
 const { isAuthenticated } = require('./utils/isAuthenticated');
 
 const router = Router();

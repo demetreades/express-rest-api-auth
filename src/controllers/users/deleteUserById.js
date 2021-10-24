@@ -1,9 +1,10 @@
 'use strict';
 
+require('module-alias/register');
 const { StatusCodes } = require('http-status-codes');
-const userService = require('../../services/user');
-const { validateId } = require('../../services/joiSchema');
-const { logger, BaseError } = require('../../utils');
+const userService = require('@services/user');
+const { validateId } = require('@services/joiSchema');
+const { logger, BaseError } = require('@utils');
 
 module.exports = async (req, res, next) => {
   try {

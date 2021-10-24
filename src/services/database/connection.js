@@ -1,8 +1,9 @@
 'use strict';
 
 require('dotenv').config();
+require('module-alias/register');
 const mongoose = require('mongoose');
-const { logger } = require('../../utils');
+const { logger } = require('@utils');
 
 module.exports = async () => {
   try {

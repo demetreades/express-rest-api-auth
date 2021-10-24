@@ -1,8 +1,9 @@
 'use strict';
 
+require('module-alias/register');
 const { StatusCodes } = require('http-status-codes');
-const { BaseError } = require('../../utils');
-const User = require('../models/User');
+const { BaseError } = require('@utils');
+const User = require('@models');
 
 module.exports = async (id, body) => {
   const user = await User.findByIdAndUpdate(id, body, {

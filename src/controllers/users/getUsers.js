@@ -1,8 +1,8 @@
 'use strict';
 
 const { StatusCodes } = require('http-status-codes');
-const userService = require('../../services/user');
-const { logger } = require('../../utils');
+const userService = require('@services/user');
+const { logger } = require('@utils');
 
 module.exports = async (req, res, next) => {
   try {

@@ -1,6 +1,7 @@
 'use strict';
 
 require('dotenv').config();
+require('module-alias/register');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -8,14 +9,14 @@ const rateLimit = require('express-rate-limit');
 const session = require('express-session');
 const passport = require('passport');
 
-const dbConnection = require('./services/database/connection');
+const dbConnection = require('@connection');
 const { handleErrors, handleMongoErrors, handleNotFound } = require('./utils');
 const { corsOptions, limitOptions, sessionOptions } = require('./config');
 
-const userRoutes = require('./routes/users');
-const authRoutes = require('./routes/auth');
+const userRoutes = require('@routes/users');
+const authRoutes = require('@routes/auth');
 
-const getActiveUser = require('./controllers/activeUser');
+const getActiveUser = require('@controllers/activeUser');
 
 dbConnection();
 
