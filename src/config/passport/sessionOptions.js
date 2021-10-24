@@ -6,7 +6,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const dbConnection = require('../../services/database/connection');
 
 const sessionStore = new MongoDBStore({
-  uri: process.env.MONGO_URI,
+  uri: 'mongodb://localhost:27017/rest-api',
   mongooseConnection: dbConnection,
   collection: 'sessions',
 });
@@ -19,7 +19,7 @@ module.exports = {
     saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, // 1 day
-      // secure: false,
+      // secure: true,
     },
   },
 };
