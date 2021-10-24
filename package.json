@@ -35,6 +35,7 @@
     "helmet": "^4.6.0",
     "http-status-codes": "^2.1.4",
     "joi-objectid": "^4.0.2",
+    "module-alias": "^2.2.2",
     "mongoose": "^6.0.11",
     "morgan": "^1.10.0",
     "passport": "^0.5.0",
@@ -54,6 +55,16 @@
     "prettier-eslint": "^13.0.0",
     "prettier-plugin-packagejson": "^2.2.13"
   },
+	"_moduleAliases": {
+  "@root"      : ".",
+  "@utils"      : "src/utils",
+  "@config" : "src/config",
+  "@controllers" : "src/controllers",
+  "@services" : "src/services",
+  "@models" : "src/services/models",
+  "@routes" : "src/routes",
+  "@connection" : "src/services/database/connection.js"
+},
   "engines": {
     "node": ">=14.x",
     "npm": ">=6.9.x"
