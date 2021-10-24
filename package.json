@@ -6,8 +6,10 @@
   "scripts": {
     "start": "NODE_ENV=production node src/bin/www",
     "dev": "nodemon src/bin/www",
-    "DATA:import": "node src/config/db/seeder",
-    "DATA:remove": "node src/config/db/seeder -del"
+    "kill": "kill $(lsof -t -i:5000) && nodemon src/bin/www",
+    "pm2:start": "pm2 start src/bin/www",
+    "DATA:import": "node src/services/database/seeder",
+    "DATA:remove": "node src/services/database/seeder -del"
   },
   "keywords": [
     "node",
@@ -15,19 +17,24 @@
     "rest-api",
     "auth"
   ],
-  "author": "quorum",
+  "author": "Panos Dimitriadis (https://github.com/demetreades)",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/demetreades/express-rest-api-auth/issues"
+  },
+  "homepage": "https://github.com/demetreades/express-rest-api-auth#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "connect-mongodb-session": "^3.1.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-async-handler": "^1.2.0",
     "express-rate-limit": "^5.5.0",
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
     "http-status-codes": "^2.1.4",
+    "joi-objectid": "^4.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.11",
     "morgan": "^1.10.0",
@@ -47,5 +54,9 @@
     "prettier": "^2.4.1",
     "prettier-eslint": "^13.0.0",
     "prettier-plugin-packagejson": "^2.2.13"
+  },
+  "engines": {
+    "node": ">=14.x",
+    "npm": ">=6.9.x"
   }
 }
