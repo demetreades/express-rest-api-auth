@@ -32,13 +32,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport/localStrategy');
-// app.use(routes);
+
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 
-app.get('/', (req, res) =>
-  res.json({ success: true, message: 'development root endpoint' })
-);
+app.get('/', (req, res) => res.json({ message: 'development root endpoint' }));
 
 app.use(handleNotFound);
 app.use(handleMongoErrors);
