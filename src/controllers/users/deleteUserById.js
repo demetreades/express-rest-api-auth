@@ -1,18 +1,31 @@
 'use strict';
 
 const { StatusCodes } = require('http-status-codes');
-const asyncHandler = require('express-async-handler');
 const userService = require('../../services/user');
-const { logger } = require('../../utils');
+const { validateId } = require('../../services/joiSchema');
+const { logger, BaseError } = require('../../utils');
 
-module.exports = asyncHandler(async (req, res, next) => {
-  const { params: { id } } = req;
-  await userService.deleteById(id);
+module.exports = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userId = { _id: id };
 
-  logger.info(`DELETE single user with id: ${id}`);
+    const resultId = await validateId(userId);
+    await userService.deleteById(resultId);
 
-  res.status(StatusCodes.OK).json({
-    success: true,
-    data: {},
-  });
-});
+    logger.info(`DELETE single user with id: ${id}`);
+
+    res.status(StatusCodes.OK).json({
+      success: true,
+      data: {},
+    });
+  } catch (err) {
+    if (err.isJoi === true) {
+      next(
+        new BaseError(err.details[0].message, StatusCodes.UNPROCESSABLE_ENTITY)
+      );
+    }
+
+    next(err);
+  }
+};
