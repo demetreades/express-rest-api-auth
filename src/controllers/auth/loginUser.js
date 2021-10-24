@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
     const { username: result } = await validateUsername({ username });
 
-    const user = await userService.getByProperty(result);
+    const user = await userService.getByProperty(result); // ???
 
     logger.info(`CONTROLLER: ${username}, logged in`);
 

@@ -56,14 +56,14 @@
     "prettier-plugin-packagejson": "^2.2.13"
   },
 	"_moduleAliases": {
-  "@root"      : ".",
-  "@utils"      : "src/utils",
-  "@config" : "src/config",
-  "@controllers" : "src/controllers",
-  "@services" : "src/services",
-  "@models" : "src/services/models",
-  "@routes" : "src/routes",
-  "@connection" : "src/services/database/connection.js"
+  "@root": ".",
+  "@utils": "src/utils",
+  "@config": "src/config",
+  "@controllers": "src/controllers",
+  "@services": "src/services",
+  "@models": "src/services/models",
+  "@routes": "src/routes",
+  "@connection": "src/services/database/connection.js"
 },
   "engines": {
     "node": ">=14.x",
