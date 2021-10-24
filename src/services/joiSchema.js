@@ -21,7 +21,16 @@ const validateUser = (user) => {
   return userValidationSchema.validateAsync(user);
 };
 
+const validateUsername = (username) => {
+  const usernameValidationSchema = Joi.object({
+    username: Joi.string().lowercase().min(3).max(64).required(),
+  });
+
+  return usernameValidationSchema.validateAsync(username);
+};
+
 module.exports = {
-  validateUser,
   validateId,
+  validateUser,
+  validateUsername,
 };
