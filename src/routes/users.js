@@ -10,18 +10,16 @@ const {
     deleteUserById,
   },
 } = require('../controllers');
+const { isAuthenticated } = require('./utils/isAuthenticated');
 
 const router = Router();
 
-router
-  .route('/')
-  .get(getUsers)
-  .post(createUser);
+router.route('/').get(getUsers).post(isAuthenticated, createUser);
 
 router
   .route('/:id')
   .get(getUserById)
-  .put(updateUser)
-  .delete(deleteUserById);
+  .put(isAuthenticated, updateUser)
+  .delete(isAuthenticated, deleteUserById);
 
 module.exports = router;

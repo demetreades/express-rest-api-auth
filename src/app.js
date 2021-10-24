@@ -30,10 +30,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+require('./config/passport/localStrategy');
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-require('./config/passport/localStrategy');
 
 app.use(getActiveUser); // temporary for checking if req.user exist
 

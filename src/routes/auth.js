@@ -6,11 +6,12 @@ const passport = require('passport');
 const {
   authController: { loginUser, logOutUser, getProfile },
 } = require('../controllers');
+const { isAuthenticated } = require('./utils/isAuthenticated');
 
 const router = Router();
 
 router.post('/login', passport.authenticate('local'), loginUser);
 router.get('/logout', logOutUser);
-router.get('/profile', getProfile);
+router.get('/profile', isAuthenticated, getProfile);
 
 module.exports = router;
