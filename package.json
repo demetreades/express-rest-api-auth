@@ -5,7 +5,7 @@
   "main": "src/bin/www",
   "scripts": {
     "start": "NODE_ENV=production node src/bin/www",
-    "dev": "nodemon src/bin/www",
+    "dev": "nodemon --delay 500ms src/bin/www",
     "kill": "kill $(lsof -t -i:5000) && nodemon src/bin/www",
     "pm2:start": "pm2 start src/bin/www",
     "DATA:import": "node src/services/database/seeder",
