@@ -15,14 +15,7 @@ module.exports = {
         );
       }
     },
+    methods: 'GET, HEAD, PUT, POST, DELETE',
     optionsSuccessStatus: StatusCodes.OK,
   },
 };
-
-// module.exports = {
-//   origin: 'http://localhost:3000',
-//   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-//   credentials: true,
-//   preflightContinue: false,
-//   optionsSuccessStatus: 200,
-// };
