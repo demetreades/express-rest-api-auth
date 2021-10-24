@@ -27,8 +27,8 @@ const userSchema = mongoose.Schema(
       trim: true,
       required: [true, 'Password is required'],
       maxlength: [25, 'Password cannot exceed 25 characters'],
-      minlength: [8, 'Password cannot be less than 6 characters'],
-      // select: false,
+      minlength: [8, 'Password cannot be less than 8 characters'],
+      select: false,
     },
 
     // isActive: {
